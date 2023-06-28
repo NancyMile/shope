@@ -32,6 +32,11 @@
         <h2 class=" font-black text-3xl text-center">Patients Follow up</h2>
         <p class=" text-lg m-t-5 text-center mb-10">Add patients <span class=" text-indigo-600 font-bold">manage them</span> </p>
 
+        <Alert
+            v-if="(alert.message)"
+            :alert="alert"
+        />
+
         <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
             @submit.prevent="validate"
         >
