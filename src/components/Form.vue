@@ -9,7 +9,13 @@
         symtoms: ''
     })
 
-    const validate = () => console.log('validating ...')
+    const validate = () => {
+        if(Object.values(patient).includes('')){
+            console.log('Some data is missing.')
+            return
+        }
+        console.log('validating ...')
+    }
 
 </script>
 
