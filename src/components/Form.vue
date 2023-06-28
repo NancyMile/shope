@@ -1,5 +1,11 @@
 <script setup>
     import { reactive } from 'vue'
+    import Alert from './Alert.vue'
+
+    const alert = reactive({
+        type: '',
+        message: ''
+    })
 
     const patient = reactive({
         name: '',
@@ -11,7 +17,9 @@
 
     const validate = () => {
         if(Object.values(patient).includes('')){
-            console.log('Some data is missing.')
+            //console.log('Some data is missing.')
+            alert.message = 'Please fill everything.'
+            alert.type ='error'
             return
         }
         console.log('validating ...')
