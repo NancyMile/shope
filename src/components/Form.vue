@@ -3,8 +3,6 @@
 
     const name = ref('max')
 
-    const readName = e => name.value = e.target.value
-
 </script>
 
 <template>
@@ -21,8 +19,7 @@
                     type="text"
                     placeholder="Pet Name"
                     class="border-2 w-full p-2 mt-2 placeholder:gray-400 rounded-md"
-                    :value="name"
-                    @input="readName"
+                    v-model="name"
                 />
             </div>
             <div class="mb-5">
