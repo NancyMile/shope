@@ -9,6 +9,8 @@
         symtoms: ''
     })
 
+    const validate = () => console.log('validating ...')
+
 </script>
 
 <template>
@@ -16,7 +18,9 @@
         <h2 class=" font-black text-3xl text-center">Patients Follow up</h2>
         <p class=" text-lg m-t-5 text-center mb-10">Add patients <span class=" text-indigo-600 font-bold">manage them</span> </p>
 
-        <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
+        <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
+            @submit.prevent="validate"
+        >
             <div class="mb-5">
                 <label class="block text-gray-600 uppercase font-bold" for="pet">Pet Name</label>
                 <input
