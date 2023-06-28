@@ -1,4 +1,7 @@
 <script setup>
+    import { ref } from 'vue'
+
+    const name = ref('max')
 
 </script>
 
@@ -8,6 +11,7 @@
         <p class=" text-lg m-t-5 text-center mb-10">Add patients <span class=" text-indigo-600 font-bold">manage them</span> </p>
 
         <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
+            {{ name }}
             <div class="mb-5">
                 <label class="block text-gray-600 uppercase font-bold" for="pet">Pet Name</label>
                 <input
@@ -15,6 +19,8 @@
                     type="text"
                     placeholder="Pet Name"
                     class="border-2 w-full p-2 mt-2 placeholder:gray-400 rounded-md"
+                    :value="name"
+                    @input="(e)=> name = e.target.value"
                 />
             </div>
             <div class="mb-5">
