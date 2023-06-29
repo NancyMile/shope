@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from "vue"
+import { ref, reactive, onMounted,watch } from "vue"
 import { uid } from 'uid'
 import Header from "./components/Header.vue"
 import Form from "./components/Form.vue"
@@ -15,6 +15,23 @@ const patient = reactive({
   discharged: "",
   symtoms: "",
 })
+
+onMounted(() => {
+  const patientsStorage = localStorage.getItem('patients')
+  if (patientsStorage) {
+    patients.value = JSON.parse(patientsStorage)
+  }
+})
+
+watch(patients, () => {
+  saveLocalStorage()
+}, {
+  deep: true
+})
+
+const saveLocalStorage = () => {
+  localStorage.setItem('patients', JSON.stringify(patients.value))
+}
 
 const savePatient = () => {
   if (patient.id) {
