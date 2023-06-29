@@ -17,8 +17,16 @@ const patient = reactive({
 })
 
 const savePatient = () => {
-  //console.log('Save patient')
-  patients.value.push({ ...patient, id: uid() })
+  if (patient.id) {
+    //console.log('editing');
+    const { id } = patient
+    //find the position if this patient on patients array
+    const index = patients.value.findIndex(patientState => patientState.id === id)
+    patients.value[index] = { ... patient }
+  } else {
+    //console.log('Save patient')
+    patients.value.push({ ...patient, id: uid() })
+  }
 
   //clear
   Object.assign(patient, {
@@ -26,7 +34,8 @@ const savePatient = () => {
     owner: "",
     email: "",
     discharged: "",
-    symtoms: ""
+    symtoms: "",
+    id: null
   });
 }
 
