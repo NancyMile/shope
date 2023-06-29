@@ -57,6 +57,7 @@ const updatePatient = (id) => {
         v-model:discharged="patient.discharged"
         v-model:symtoms="patient.symtoms"
         @save-patient="savePatient"
+        :id="patient.id"
       />
 
       <div class="md:w-1/2 md:h-screen overflow-y-scroll">

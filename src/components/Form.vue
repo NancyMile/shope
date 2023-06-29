@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue"
+import { reactive, computed } from "vue"
 import Alert from "./Alert.vue"
 
 const alert = reactive({
@@ -17,6 +17,10 @@ const emit = defineEmits([
 ])
 
 const props = defineProps({
+  id:{
+    type: [String, null],
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -58,6 +62,11 @@ const validate = () => {
     })
   },3000)
 }
+
+// when data wil change regularly use computed
+const editing = computed(()=>{
+  return props.id // retuns true if there is id
+})
 </script>
 
 <template>
@@ -139,7 +148,7 @@ const validate = () => {
       <div class="mb-5">
         <input
           type="submit"
-          value="Register"
+          :value=" [editing ? 'Save Changes' : 'Register']"
           class="w-full p-3 uppercase bg-indigo-600 text-white hover:bg-indigo-900 font-bold cursor-pointer transition-colors"
         />
       </div>
