@@ -47,6 +47,8 @@ const validate = () => {
     return
   }
   emit('save-patient')
+  alert.message = "Patient registered"
+  alert.type = "success"
 }
 </script>
 
