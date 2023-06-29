@@ -5,6 +5,8 @@
             required: true
         }
     })
+
+    defineEmits('update-patient')
 </script>
 
 
@@ -48,6 +50,7 @@
 
         <div class="grid md:grid-cols-2  gap-5 mt-10 ">
             <button type="button"
+                @click="$emit('update-patient',patient.id)"
                 class="block w-full py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg">Edit</button>
 
             <button type="button"
