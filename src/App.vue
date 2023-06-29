@@ -16,7 +16,16 @@ const patient = reactive({
 
 const savePatient = () => {
   //console.log('Save patient')
-  patients.value.push(patient)
+  patients.value.push({ ...patient })
+
+  //clear
+  Object.assign(patient, {
+    name: "",
+    owner: "",
+    email: "",
+    discharged: "",
+    symtoms: ""
+  });
 }
 </script>
 
