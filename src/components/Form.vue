@@ -7,16 +7,39 @@
         message: ''
     })
 
-    const patient = reactive({
-        name: '',
-        owner: '',
-        email: '',
-        discharged: '',
-        symtoms: ''
+    defineEmits([
+        'update:name',
+        'update:owner',
+        'update:email',
+        'update:discharged',
+        'update:symtoms'
+    ])
+
+    const props = defineProps({
+        name:{
+            type: String,
+            required: true,
+        },
+        owner:{
+            type: String,
+            required: true
+        },
+        email:{
+            type: String,
+            required: true
+        },
+        discharged:{
+            type: String,
+            required: true
+        },
+        symtoms:{
+            type: String,
+            required: true,
+        }
     })
 
     const validate = () => {
-        if(Object.values(patient).includes('')){
+        if(Object.values(props).includes('')){
             //console.log('Some data is missing.')
             alert.message = 'Please fill everything.'
             alert.type ='error'
@@ -47,7 +70,8 @@
                     type="text"
                     placeholder="Pet Name"
                     class="border-2 w-full p-2 mt-2 placeholder:gray-400 rounded-md"
-                    v-model="patient.name"
+                    :value="name"
+                    @input="$emit('update:name',$event.target.value)"
                 />
             </div>
             <div class="mb-5">
@@ -57,7 +81,8 @@
                     type="text"
                     placeholder="Owner name"
                     class="border-2 w-full p-2 mt-2 placeholder:gray-400 rounded-md"
-                    v-model="patient.owner"
+                    :value="owner"
+                    @input="$emit('update:owner', $event.target.value)"
                 />
             </div>
             <div class="mb-5">
@@ -67,7 +92,8 @@
                     type="email"
                     placeholder="email"
                     class="border-2 w-full p-2 mt-2 placeholder:gray-400 rounded-md"
-                    v-model="patient.email"
+                    :value="email"
+                    @input="$emit('update:email', $event.target.value)"
                 />
             </div>
             <div class="mb-5">
@@ -76,7 +102,8 @@
                     id="discharged"
                     type="date"
                     class="border-2 w-full p-2 mt-2 placeholder:gray-400 rounded-md"
-                    v-model="patient.discharged"
+                    :value="discharged"
+                    @input="$emit('update:discharged',$event.target.value)"
                 />
             </div>
             <div class="mb-5">
@@ -85,7 +112,8 @@
                     id="sysmtoms"
                     placeholder="Symtoms"
                     class="border-2 w-full p-2 mt-2 placeholder:gray-400 rounded-md h-40"
-                    v-model="patient.symtoms"
+                    :value="symtoms"
+                    @input="$emit('update:symtoms',$event.target.value)"
                 ></textarea>
             </div>
             <div class="mb-5">

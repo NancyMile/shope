@@ -1,9 +1,17 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import Header from './components/Header.vue'
 import Form from './components/Form.vue'
 
   const patients = ref([])
+
+  const patient = reactive({
+        name: '',
+        owner: '',
+        email: '',
+        discharged: '',
+        symtoms: ''
+    })
 
 </script>
 
@@ -11,7 +19,13 @@ import Form from './components/Form.vue'
   <div class="container mx-auto mt-20">
     <Header/>
     <div class="mt-12 md:flex">
-      <Form/>
+      <Form
+        v-model:name="patient.name"
+        v-model:owner="patient.owner"
+        v-model:email="patient.email"
+        v-model:discharged="patient.discharged"
+        v-model:symtoms="patient.symtoms"
+      />
 
       <div class="md:w-1/2 md:h-screen overflow-y-scroll">
         <h3 class="font-black text-3xl text-center">Admin Patients</h3>
