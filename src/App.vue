@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive } from "vue"
+import { uid } from 'uid'
 import Header from "./components/Header.vue"
 import Form from "./components/Form.vue"
 import Patient from "./components/Patient.vue"
@@ -7,6 +8,7 @@ import Patient from "./components/Patient.vue"
 const patients = ref([])
 
 const patient = reactive({
+  id: null,
   name: "",
   owner: "",
   email: "",
@@ -16,7 +18,7 @@ const patient = reactive({
 
 const savePatient = () => {
   //console.log('Save patient')
-  patients.value.push({ ...patient })
+  patients.value.push({ ...patient, id: uid() })
 
   //clear
   Object.assign(patient, {
