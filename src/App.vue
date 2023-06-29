@@ -2,6 +2,7 @@
 import { ref, reactive } from "vue"
 import Header from "./components/Header.vue"
 import Form from "./components/Form.vue"
+import Patient from "./components/Patient.vue"
 
 const patients = ref([])
 
@@ -14,7 +15,8 @@ const patient = reactive({
 })
 
 const savePatient = () => {
-  console.log('Save patient')
+  //console.log('Save patient')
+  patients.value.push(patient)
 }
 </script>
 
@@ -33,7 +35,15 @@ const savePatient = () => {
 
       <div class="md:w-1/2 md:h-screen overflow-y-scroll">
         <h3 class="font-black text-3xl text-center">Admin Patients</h3>
-        <div v-if="patients.length > 0"></div>
+        <div v-if="patients.length > 0">
+          <p class="text-lg m-t-5 text-center mb-10">
+            Patiensts <span class="text-indigo-600 font-bold">Information</span>
+          </p>
+          <Patient
+            v-for="patient in patients"
+            :patient="patient"
+          />
+        </div>
         <p v-else class="mt-20 text-2xl text-center">No patients.</p>
       </div>
     </div>
