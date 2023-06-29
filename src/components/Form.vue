@@ -49,6 +49,14 @@ const validate = () => {
   emit('save-patient')
   alert.message = "Patient registered"
   alert.type = "success"
+
+  //clear alert
+  setTimeout(()=>{
+    Object.assign(alert,{
+      type: "",
+      message: "",
+    })
+  },3000)
 }
 </script>
 
