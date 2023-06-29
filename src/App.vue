@@ -44,6 +44,12 @@ const updatePatient = (id) => {
   const editPatient = patients.value.filter(patient => patient.id === id)[0] //as is only one record
   Object.assign(patient, editPatient)
 }
+
+const deletePatient = (id) => {
+  //onsole.log('delete patient ...')
+  patients.value = patients.value.filter(patient => patient.id !== id)
+}
+
 </script>
 
 <template>
@@ -70,6 +76,7 @@ const updatePatient = (id) => {
             v-for="patient in patients"
             :patient="patient"
             @update-patient="updatePatient"
+            @delete-patient="deletePatient"
           />
         </div>
         <p v-else class="mt-20 text-2xl text-center">No patients.</p>
